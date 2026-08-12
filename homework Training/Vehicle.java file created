@@ -1,0 +1,91 @@
+import java.util.*;
+
+abstract class Vehicle {
+    String number, brand;
+    double rate;
+
+    Vehicle(String number, String brand, double rate) {
+        this.number = number;
+        this.brand = brand;
+        this.rate = rate;
+    }
+
+    abstract double calculateRentalCost(int days);
+}
+
+interface Insurable {
+    double getInsuranceCost();
+}
+
+class Car extends Vehicle implements Insurable {
+    Car(String n, String b, double r) {
+        super(n, b, r);
+    }
+
+    double calculateRentalCost(int days) {
+        return rate * days;
+    }
+
+    public double getInsuranceCost() {
+        return 500;
+    }
+}
+
+class Bike extends Vehicle {
+    Bike(String n, String b, double r) {
+        super(n, b, r);
+    }
+
+    double calculateRentalCost(int days) {
+        return rate * days;
+    }
+}
+
+class Truck extends Vehicle implements Insurable {
+    Truck(String n, String b, double r) {
+        super(n, b, r);
+    }
+
+    double calculateRentalCost(int days) {
+        return rate * days;
+    }
+
+    public double getInsuranceCost() {
+        return 1000;
+    }
+}
+
+class RentalAgency {
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
+
+    void add(Vehicle v) {
+        vehicles.add(v);
+    }
+
+    void bill(Vehicle v, int days) {
+        double cost = v.calculateRentalCost(days);
+
+        if (v instanceof Insurable)
+            cost += ((Insurable)v).getInsuranceCost();
+
+        System.out.println(v.brand + " Total = " + cost);
+    }
+}
+
+public class VehicleRentalSystem {
+    public static void main(String[] args) {
+        RentalAgency r = new RentalAgency();
+
+        Car c = new Car("C1", "Toyota", 2000);
+        Bike b = new Bike("B1", "Yamaha", 800);
+        Truck t = new Truck("T1", "Volvo", 5000);
+
+        r.add(c);
+        r.add(b);
+        r.add(t);
+
+        r.bill(c, 2);
+        r.bill(t, 2);
+        r.bill(b, 2);
+    }
+}
