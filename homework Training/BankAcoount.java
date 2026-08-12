@@ -8,16 +8,16 @@ class BankAccount {
     void accept() {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Account No: ");
+        System.out.print(" Enter Account No: ");
         accountNo = sc.nextInt();
 
-        System.out.print("Name: ");
+        System.out.print(enter the "Name: ");
         name = sc.next();
 
-        System.out.print("Account Type: ");
+        System.out.print("enter the Account Type: ");
         type = sc.next();
 
-        System.out.print("Balance: ");
+        System.out.print("enter Balance: ");
         balance = sc.nextDouble();
     }
 
