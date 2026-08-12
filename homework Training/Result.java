@@ -8,9 +8,7 @@ class Student {
     double average;
     char grade;
 
-    void accept() {
-        Scanner sc = new Scanner(System.in);
-
+    void accept(Scanner sc) {
         System.out.print("Enter ID: ");
         id = sc.nextInt();
 
@@ -43,65 +41,56 @@ class Student {
 
     void display() {
         System.out.println(id + " " + name + " " +
-                total + " " + average + " " + grade);
+                           total + " " + average + " " + grade);
     }
 }
 
 public class StudentResults {
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
         Student s1 = new Student();
         Student s2 = new Student();
         Student s3 = new Student();
-        Student s4 = new Student();
-        Student s5 = new Student();
 
         System.out.println("Student 1");
-        s1.accept();
+        s1.accept(sc);
         s1.calculate();
 
         System.out.println("Student 2");
-        s2.accept();
+        s2.accept(sc);
         s2.calculate();
 
         System.out.println("Student 3");
-        s3.accept();
+        s3.accept(sc);
         s3.calculate();
-
-        System.out.println("Student 4");
-        s4.accept();
-        s4.calculate();
-
-        System.out.println("Student 5");
-        s5.accept();
-        s5.calculate();
 
         System.out.println("\nID Name Total Average Grade");
 
         s1.display();
         s2.display();
         s3.display();
-        s4.display();
-        s5.display();
-        Student high = s1;
 
-        if (s2.total > high.total) high = s2;
-        if (s3.total > high.total) high = s3;
-        if (s4.total > high.total) high = s4;
-        if (s5.total > high.total) high = s5;
+        Student high = s1;
         Student low = s1;
 
-        if (s2.total < low.total) low = s2;
-        if (s3.total < low.total) low = s3;
-        if (s4.total < low.total) low = s4;
-        if (s5.total < low.total) low = s5;
+        if (s2.total > high.total)
+            high = s2;
 
-        double classAverage =
-                (s1.average + s2.average + s3.average +
-                 s4.average + s5.average) / 5;
+        if (s3.total > high.total)
+            high = s3;
 
-        System.out.println("\nHighest: " + high.name);
+        if (s2.total < low.total)
+            low = s2;
+
+        if (s3.total < low.total)
+            low = s3;
+
+        double average = (s1.average + s2.average + s3.average) / 3;
+
+        System.out.println("Highest: " + high.name);
         System.out.println("Lowest: " + low.name);
-        System.out.println("Class Average: " + classAverage);
+        System.out.println("Class Average: " + average);
     }
 }
