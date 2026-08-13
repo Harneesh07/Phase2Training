@@ -21,7 +21,6 @@ abstract class LibraryItem {
 }
 
 
-// Interface
 interface Borrowable {
 
     void borrowItem();
@@ -30,8 +29,6 @@ interface Borrowable {
 }
 
 
-// Book inherits LibraryItem
-// Book also implements Borrowable
 class Book extends LibraryItem implements Borrowable {
 
     Book(String title, int itemId) {
@@ -63,8 +60,6 @@ class Book extends LibraryItem implements Borrowable {
 }
 
 
-// Magazine inherits LibraryItem
-// Magazine does NOT implement Borrowable
 class Magazine extends LibraryItem {
 
     Magazine(String title, int itemId) {
@@ -78,8 +73,6 @@ class Magazine extends LibraryItem {
 }
 
 
-// DVD inherits LibraryItem
-// DVD also implements Borrowable
 class DVD extends LibraryItem implements Borrowable {
 
     DVD(String title, int itemId) {
@@ -111,7 +104,6 @@ class DVD extends LibraryItem implements Borrowable {
 }
 
 
-// Main class
 public class LibraryManagement {
 
     public static void main(String[] args) {
@@ -123,7 +115,6 @@ public class LibraryManagement {
         DVD dvd = new DVD("Inception", 103);
 
 
-        // Display details
         book.display();
 
         System.out.println();
@@ -135,17 +126,14 @@ public class LibraryManagement {
         dvd.display();
 
 
-        // Borrow Book
         System.out.println("\n--- Book ---");
         book.borrowItem();
 
 
-        // Borrow DVD
         System.out.println("\n--- DVD ---");
         dvd.borrowItem();
 
 
-        // Attempt to borrow Magazine
         System.out.println("\n--- Magazine ---");
 
         if (magazine instanceof Borrowable) {
@@ -155,12 +143,10 @@ public class LibraryManagement {
         }
 
 
-        // Return Book
         System.out.println("\n--- Return Book ---");
         book.returnItem();
 
 
-        // Return DVD
         System.out.println("\n--- Return DVD ---");
         dvd.returnItem();
     }
