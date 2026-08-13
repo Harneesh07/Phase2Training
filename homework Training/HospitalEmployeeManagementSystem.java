@@ -1,27 +1,23 @@
-// HospitalEmployeeManagementSystem.java
+
 
 abstract class Employee {
 
-    // Private variables - Encapsulation
     private int id;
     private String name;
     private double basicSalary;
 
-    // Constructor 1
     Employee(int id, String name) {
         this.id = id;
         this.name = name;
         this.basicSalary = 0;
     }
 
-    // Constructor 2
     Employee(int id, String name, double basicSalary) {
         this.id = id;
         this.name = name;
         this.basicSalary = basicSalary;
     }
 
-    // Getters and Setters
     int getId() {
         return id;
     }
@@ -46,10 +42,8 @@ abstract class Employee {
         this.basicSalary = basicSalary;
     }
 
-    // Abstract method
     abstract double calculateSalary();
 
-    // Display details
     void displayDetails() {
         System.out.println("ID: " + id);
         System.out.println("Name: " + name);
@@ -59,18 +53,15 @@ abstract class Employee {
 }
 
 
-// Doctor class
 class Doctor extends Employee {
 
     private double consultationAllowance;
 
-    // Constructor 1
     Doctor(int id, String name) {
         super(id, name);
         consultationAllowance = 0;
     }
 
-    // Constructor 2
     Doctor(int id, String name, double basicSalary,
            double consultationAllowance) {
         super(id, name, basicSalary);
@@ -83,18 +74,15 @@ class Doctor extends Employee {
 }
 
 
-// Nurse class
 class Nurse extends Employee {
 
     private double nightShiftAllowance;
 
-    // Constructor 1
     Nurse(int id, String name) {
         super(id, name);
         nightShiftAllowance = 0;
     }
 
-    // Constructor 2
     Nurse(int id, String name, double basicSalary,
           double nightShiftAllowance) {
         super(id, name, basicSalary);
@@ -107,18 +95,15 @@ class Nurse extends Employee {
 }
 
 
-// Lab Technician class
 class LabTechnician extends Employee {
 
     private double labAllowance;
 
-    // Constructor 1
     LabTechnician(int id, String name) {
         super(id, name);
         labAllowance = 0;
     }
 
-    // Constructor 2
     LabTechnician(int id, String name, double basicSalary,
                   double labAllowance) {
         super(id, name, basicSalary);
@@ -131,12 +116,10 @@ class LabTechnician extends Employee {
 }
 
 
-// Main class
 public class HospitalEmployeeManagementSystem {
 
     public static void main(String[] args) {
 
-        // Employee array with different employee types
         Employee[] employees = new Employee[3];
 
         employees[0] =
@@ -149,7 +132,6 @@ public class HospitalEmployeeManagementSystem {
                 new LabTechnician(103, "Arun", 35000, 7000);
 
 
-        // Runtime polymorphism
         System.out.println("----- EMPLOYEE DETAILS -----");
 
         for (int i = 0; i < employees.length; i++) {
@@ -160,7 +142,6 @@ public class HospitalEmployeeManagementSystem {
         }
 
 
-        // Find highest-paid employee
         Employee highest = employees[0];
 
         for (int i = 1; i < employees.length; i++) {
