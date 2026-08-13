@@ -1,4 +1,4 @@
-// BankAccountSystem.java
+
 
 abstract class BankAccount {
 
@@ -6,14 +6,13 @@ abstract class BankAccount {
     private String holderName;
     private double balance;
 
-    // Constructor 1
+    
     BankAccount(int accountNumber, String holderName) {
         this.accountNumber = accountNumber;
         this.holderName = holderName;
         this.balance = 0;
     }
 
-    // Constructor 2
     BankAccount(int accountNumber, String holderName, double balance) {
         this.accountNumber = accountNumber;
         this.holderName = holderName;
@@ -43,7 +42,7 @@ abstract class BankAccount {
 }
 
 
-// Savings Account
+
 class SavingsAccount extends BankAccount {
 
     SavingsAccount(int accountNumber, String holderName) {
@@ -54,7 +53,6 @@ class SavingsAccount extends BankAccount {
         super(accountNumber, holderName, balance);
     }
 
-    // Minimum balance ₹1000
     void withdraw(double amount) {
 
         if (getBalance() - amount >= 1000) {
@@ -68,7 +66,7 @@ class SavingsAccount extends BankAccount {
 }
 
 
-// Current Account
+
 class CurrentAccount extends BankAccount {
 
     CurrentAccount(int accountNumber, String holderName) {
@@ -79,7 +77,7 @@ class CurrentAccount extends BankAccount {
         super(accountNumber, holderName, balance);
     }
 
-    // Overdraft limit ₹5000
+
     void withdraw(double amount) {
 
         if (getBalance() - amount >= -5000) {
@@ -92,12 +90,11 @@ class CurrentAccount extends BankAccount {
 }
 
 
-// Main class
+
 public class BankAccountSystem {
 
     public static void main(String[] args) {
 
-        // Polymorphism
         BankAccount savings =
                 new SavingsAccount(101, "Rahul", 5000);
 
